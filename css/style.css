@@ -47,6 +47,7 @@ button {
     height: 103px;
     width: calc(100% / 10);
     border: 2px solid white;
+    cursor: pointer;
 }
 
 .square-active {
