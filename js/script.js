@@ -30,47 +30,48 @@ const mediumGame = document.getElementById("medium-btn");
 const difficultGame = document.getElementById("difficult-btn");
 const mySquare = document.querySelector(".square");
 
-easyGame.addEventListener("click", 
-    function () {
-        for (let i = 0; i < 100; i++) {
-            let squareCont = generateElement("div", "square", "square-easy");
-            squareCont.addEventListener("click",
-                function() {
-                    this.classList.add("square-active");
-                }
-            );
-            gridCont.appendChild(squareCont);
-        }
-    }
-);
+let difficult = 100;
+let classes = 'easy';
+easyGame.addEventListener("click", function() {
+    difficult = 100;
+    let classes = 'easy';
+    play(difficult, classes);
+});
 
-mediumGame.addEventListener("click", 
-    function () {
-        for (let i = 0; i < 81; i++) {
-            let squareCont = generateElement("div", "square", "square-medium");
-            squareCont.addEventListener("click",
-                function() {
-                    this.classList.add("square-active");
-                }
-            );
-            gridCont.appendChild(squareCont);
-        }
-    }
-);
+mediumGame.addEventListener("click", function() {
+    difficult = 100;
+    let classes = 'medium';
+    play(difficult, classes);
+});
 
-difficultGame.addEventListener("click", 
-    function () {
-        for (let i = 0; i < 49; i++) {
-            let squareCont = generateElement("div", "square", "square-difficult");
-            squareCont.addEventListener("click",
-                function() {
-                    this.classList.add("square-active");
-                }
-            );
-            gridCont.appendChild(squareCont);
-        }
+
+difficultGame.addEventListener("click", function() {
+    difficult = 100;
+    let classes = 'difficult';
+    play(difficult, classes);
+});
+
+
+function play(difficult, classes) {
+
+    if (document.querySelectorAll('.square').length) {
+    for (let j = 0; j < 100; j++) {
+        document.querySelector('.square').remove();
+    }}
+    
+    for (let i = 0; i < difficult; i++) {
+        let squareCont = generateElement("div", "square", "square-" + classes);
+        squareCont.addEventListener("click",
+            function() {
+                this.classList.add("square-active");
+            }
+        );
+        gridCont.appendChild(squareCont);
     }
-);
+}
+
+
+
 
 // FUNZIONI
 
