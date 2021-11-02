@@ -11,15 +11,72 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro (
 
 /*
 
-1. Genero la griglia di gioco con le varie celle in base alla difficoltà selezionata => for
-    1.2 Se seleziona "Facile" (difficoltà 1), eseguirò un ciclo for che si ripeterà 100 volte, visto che dovrò stampare 100 celle. => for i < 100
-    1.2 Se seleziona "Medio" (difficoltà 2), eseguirò un ciclo for che si ripeterà 81 volte, visto che dovrò stampare 81 celle. => for i < 81
-    1.3 Se seleziona "Difficile" (difficoltà 3), eseguirò un ciclo for che si ripeterà 49 volte, visto che dovrò stampare 49 celle. => for i < 49
-2. Creo un elemento => "div"
-3. Aggiungo una classe all'elemento creato => classList.add("square")
-4. Appendo l'elemento con la classe alla variabile che fa riferimento all'id di un tag html => .append 
-5. Creo un evento al click della cella, in modo che si colora quando viene selezionata
-    5.1 Creo una funzione => function squareActive()
-    5.2 Aggiungo una classe all'elemento creato precedentemente ("div") => div.append("square-active")
+--DONE  1. Genero la griglia di gioco con le varie celle in base alla difficoltà selezionata => for
+    --DONE  1.2 Se seleziona "Facile" (difficoltà 1), eseguirò un ciclo for che si ripeterà 100 volte, visto che dovrò stampare 100 celle. => for i < 100
+    --DONE  1.2 Se seleziona "Medio" (difficoltà 2), eseguirò un ciclo for che si ripeterà 81 volte, visto che dovrò stampare 81 celle. => for i < 81
+    --DONE  1.3 Se seleziona "Difficile" (difficoltà 3), eseguirò un ciclo for che si ripeterà 49 volte, visto che dovrò stampare 49 celle. => for i < 49
+--DONE  2. Creo un elemento => "div"
+--DONE  3. Aggiungo una classe all'elemento creato => classList.add("square")
+--DONE  4. Appendo l'elemento con la classe alla variabile che fa riferimento all'id di un tag html => .append 
+--DONE  5. Creo un evento al click della cella, in modo che si colora quando viene selezionata
+    --DONE  5.1 Creo una funzione => function squareActive()
+    --DONE  5.2 Aggiungo una classe all'elemento creato precedentemente ("div") => div.append("square-active")
 
 */
+
+const gridCont = document.getElementById("grid");
+const easyGame = document.getElementById("easy-btn");
+const mediumGame = document.getElementById("medium-btn");
+const difficultGame = document.getElementById("difficult-btn");
+const mySquare = document.querySelector(".square");
+
+easyGame.addEventListener("click", 
+    function () {
+        for (let i = 0; i < 100; i++) {
+            let squareCont = generateElement("div", "square", "square-easy");
+            squareCont.addEventListener("click",
+                function() {
+                    this.classList.add("square-active");
+                }
+            );
+            gridCont.appendChild(squareCont);
+        }
+    }
+);
+
+mediumGame.addEventListener("click", 
+    function () {
+        for (let i = 0; i < 81; i++) {
+            let squareCont = generateElement("div", "square", "square-medium");
+            squareCont.addEventListener("click",
+                function() {
+                    this.classList.add("square-active");
+                }
+            );
+            gridCont.appendChild(squareCont);
+        }
+    }
+);
+
+difficultGame.addEventListener("click", 
+    function () {
+        for (let i = 0; i < 49; i++) {
+            let squareCont = generateElement("div", "square", "square-difficult");
+            squareCont.addEventListener("click",
+                function() {
+                    this.classList.add("square-active");
+                }
+            );
+            gridCont.appendChild(squareCont);
+        }
+    }
+);
+
+// FUNZIONI
+
+// Permette di creare un elemento e aggiungere fino a 2 classi.
+const generateElement = (inputElement, inputClass, inputClassPlus) => {
+    let myCreateElement = document.createElement(inputElement); 
+    myCreateElement.classList.add(inputClass, inputClassPlus);
+    return myCreateElement
+}

@@ -44,10 +44,23 @@ button {
 }
 
 .square {
-    height: 103px;
-    width: calc(100% / 10);
     border: 2px solid white;
     cursor: pointer;
+}
+
+.square-easy {
+    height: 103px;
+    width: calc(100% / 10);
+}
+
+.square-medium {
+    height: 115px;
+    width: calc(100% / 9);
+}
+
+.square-difficult {
+    height: 147px;
+    width: calc(100% / 7);
 }
 
 .square-active {
