@@ -30,8 +30,6 @@ const mediumGame = document.getElementById("medium-btn");
 const difficultGame = document.getElementById("difficult-btn");
 const mySquare = document.querySelector(".square");
 
-let difficult = 100;
-let classes = 'easy';
 easyGame.addEventListener("click", function() {
     difficult = 100;
     let classes = 'easy';
@@ -39,25 +37,29 @@ easyGame.addEventListener("click", function() {
 });
 
 mediumGame.addEventListener("click", function() {
-    difficult = 100;
+    difficult = 81;
     let classes = 'medium';
     play(difficult, classes);
 });
 
 
 difficultGame.addEventListener("click", function() {
-    difficult = 100;
+    difficult = 49;
     let classes = 'difficult';
     play(difficult, classes);
 });
 
 
+// FUNZIONI
+
+// Genera le celle.
 function play(difficult, classes) {
 
     if (document.querySelectorAll('.square').length) {
-    for (let j = 0; j < 100; j++) {
-        document.querySelector('.square').remove();
-    }}
+        for (let j = 0; j < 100; j++) {
+            document.querySelector('.square').remove();
+        }
+    }
     
     for (let i = 0; i < difficult; i++) {
         let squareCont = generateElement("div", "square", "square-" + classes);
@@ -69,11 +71,6 @@ function play(difficult, classes) {
         gridCont.appendChild(squareCont);
     }
 }
-
-
-
-
-// FUNZIONI
 
 // Permette di creare un elemento e aggiungere fino a 2 classi.
 const generateElement = (inputElement, inputClass, inputClassPlus) => {
