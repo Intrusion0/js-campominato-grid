@@ -31,22 +31,16 @@ const difficultGame = document.getElementById("difficult-btn");
 const mySquare = document.querySelector(".square");
 
 easyGame.addEventListener("click", function() {
-    difficult = 100;
-    let classes = 'easy';
-    play(difficult, classes);
+    play(100, 'easy');
 });
 
 mediumGame.addEventListener("click", function() {
-    difficult = 81;
-    let classes = 'medium';
-    play(difficult, classes);
+    play(81, 'medium');
 });
 
 
 difficultGame.addEventListener("click", function() {
-    difficult = 49;
-    let classes = 'difficult';
-    play(difficult, classes);
+    play(49, 'difficult');
 });
 
 
@@ -56,16 +50,18 @@ difficultGame.addEventListener("click", function() {
 function play(difficult, classes) {
 
     if (document.querySelectorAll('.square').length) {
-        for (let j = 0; j < 100; j++) {
+        for (let j = 0; j < 100; j++) { // Da sistemare la condizione!!!!
             document.querySelector('.square').remove();
         }
     }
     
-    for (let i = 0; i < difficult; i++) {
+    for (let i = 1; i <= difficult; i++) {
         let squareCont = generateElement("div", "square", "square-" + classes);
         squareCont.addEventListener("click",
             function() {
                 this.classList.add("square-active");
+                squareCont.innerText = i;
+                console.log("click");
             }
         );
         gridCont.appendChild(squareCont);
